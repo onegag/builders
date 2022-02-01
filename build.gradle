@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'war'
+    id "io.spring.dependency-management" version "1.0.11.RELEASE" apply false
+}
+
+group 'com.tamkovich'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+configure(allprojects) { project ->
+    apply plugin: "io.spring.dependency-management"
+
+    dependencyManagement {
+        def servletApiVersion = '4.0.1'
+        def junitVersion = "4.13.2"
+
+        dependencies {
+            dependency("javax.servlet:javax.servlet-api:${servletApiVersion}")
+            dependency("junit:junit:${junitVersion}")
+            dependency("com.tamkovich:services:${version}")
+            dependency("com.tamkovich:utils:${version}")
+        }
+    }
+
+    sourceSets {
+        main {
+            java {
+                srcDirs = ['src/java']
+                includes = ["**/*"]
+            }
+        }
+        test{
+            java {
+                srcDirs = ['src/test/java']
+                includes = ["**/*"]
+            }
+        }
+    }
+}

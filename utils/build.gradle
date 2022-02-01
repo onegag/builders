@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+}
+
+apply from: '../some-script.gradle'
+
+group 'com.tamkovich'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit'
+}

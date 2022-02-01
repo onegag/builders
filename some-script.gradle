@@ -1,0 +1,7 @@
+task createFile {
+    project.getAllprojects()
+            .stream()
+            .forEach(proj -> {
+                println proj.name
+            })
+}
